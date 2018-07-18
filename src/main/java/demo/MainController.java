@@ -24,9 +24,34 @@ public class MainController {
 		return "Book Added";
 	}
 
-	@GetMapping(path="/all")
+	@GetMapping(path="/removeBook") // Maps a GET request at /demo/addBook
+	public @ResponseBody String removeBook (@RequestParam String name) {
+		for(Book item: getAllBooks()){
+			if(item.getName().equals(name)){
+				bookRepository.deleteById(item.getId());
+				return "Book removed";
+			}
+		}
+		return "Book not found";
+	}
+
+	@GetMapping(path="/findBook") // Maps a GET request at /demo/addBook
+	public @ResponseBody Book findBook (@RequestParam String name) {
+		for(Book item: getAllBooks()){
+			if(item.getName().equals(name)){
+				return item;
+			}
+		}
+		return null; // Book not found
+	}
+
+	@GetMapping(path="/allBooks")
 	public @ResponseBody Iterable<Book> getAllBooks() {
 		// This returns a JSON or XML with the books
 		return bookRepository.findAll();
 	}
 }
+
+
+
+
