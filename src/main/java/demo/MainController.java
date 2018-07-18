@@ -24,7 +24,7 @@ public class MainController {
 		return "Book Added";
 	}
 
-	@GetMapping(path="/removeBook") // Maps a GET request at /demo/addBook
+	@GetMapping(path="/removeBook") // Maps a GET request at /demo/removeBook
 	public @ResponseBody String removeBook (@RequestParam String name) {
 		for(Book item: getAllBooks()){
 			if(item.getName().equals(name)){
@@ -35,7 +35,7 @@ public class MainController {
 		return "Book not found";
 	}
 
-	@GetMapping(path="/findBook") // Maps a GET request at /demo/addBook
+	@GetMapping(path="/findBook") // Maps a GET request at /demo/findBook
 	public @ResponseBody Book findBook (@RequestParam String name) {
 		for(Book item: getAllBooks()){
 			if(item.getName().equals(name)){
@@ -51,6 +51,8 @@ public class MainController {
 		return bookRepository.findAll();
 	}
 }
+
+
 
 
 
