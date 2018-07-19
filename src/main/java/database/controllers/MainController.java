@@ -23,13 +23,12 @@ public class MainController {
 	 * @param name the name of the symptom
 	 * @return JSON of specfied symptom
 	 */
-	@GetMapping(path="/symptom/find")
-	public @ResponseBody Book findSymptom(@RequestParam String name) {
-
+	@GetMapping(path="/findBook")
+	public @ResponseBody Book findBook(@RequestParam String name) {
 		Iterable<Book> books = bookRepository.findAll();
-		for (Book s: books) { // make sure symptom is a valid symptom
-			if (s.getName().equals(name)) {
-				return s;
+		for (Book book: books) {
+			if (book.getName().equals(name)) {
+				return book;
 			}
 		}
 		return new Book();
@@ -40,9 +39,8 @@ public class MainController {
 	 *
 	 * @return the list of symptoms
 	 */
-	@GetMapping(path="/symptom/all")
-	public @ResponseBody Iterable<Book> getAllSymptoms() {
-		// This returns a JSON or XML with the symptoms
+	@GetMapping(path="/allBooks")
+	public @ResponseBody Iterable<Book> getAllBooks() { 
 		return bookRepository.findAll();
 	}
 
@@ -51,10 +49,10 @@ public class MainController {
 	 *
 	 * @param name the name of the symptom
 	 */
-	@GetMapping(path="/symptom/add") // Map ONLY GET Requests
-	public @ResponseBody String addNewSymptom (@RequestParam String name) {
-		Book newSymptom = new Book(name);
-		bookRepository.save(newSymptom);
-		return "New symptom has been added";
+	@GetMapping(path="/addBook")
+	public @ResponseBody String addNewBook (@RequestParam String name) {
+		Book newBook = new Book(name);
+		bookRepository.save(newBook);
+		return "New book has been added";
 	}
 }
