@@ -10,5 +10,4 @@ import database.data.Book;
 @Repository
 @Transactional
 public interface BookRepository extends CrudRepository<Book, Integer> {
-
 }
