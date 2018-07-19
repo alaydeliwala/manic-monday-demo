@@ -1,4 +1,3 @@
 demo/Application.class
-demo/BookRepository.class
-demo/MainController.class
+demo/controller/MainController.class
 demo/Book.class

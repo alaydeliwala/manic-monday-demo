@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import demo.Book;
-import demo.BookDAO;
+import demo.BookRepository;
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path="/demo") // This means URL's start with /demo (after Application path)
 public class MainController {
 	@Autowired
-	private BookDAO bookRepository;
+	private BookRepository bookRepository;
 
 	@GetMapping(path="/addBook") // Maps a GET request at /demo/addBook
 	public @ResponseBody String addBook (@RequestParam String name) {
