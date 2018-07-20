@@ -1,4 +1,6 @@
-/Users/adeliwal/helllooooo/manic-monday-demo/src/main/java/database/data/Book.java
 /Users/adeliwal/helllooooo/manic-monday-demo/src/main/java/database/Application.java
-/Users/adeliwal/helllooooo/manic-monday-demo/src/main/java/database/controllers/MainController.java
+/Users/adeliwal/helllooooo/manic-monday-demo/src/main/java/database/Author.java
+/Users/adeliwal/helllooooo/manic-monday-demo/src/main/java/database/Book.java
+/Users/adeliwal/helllooooo/manic-monday-demo/src/main/java/database/MainController.java
 /Users/adeliwal/helllooooo/manic-monday-demo/src/main/java/database/BookRepository.java
+/Users/adeliwal/helllooooo/manic-monday-demo/src/main/java/database/AuthorRepository.java

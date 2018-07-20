@@ -1,9 +1,10 @@
-package database.data;
+package database;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +16,10 @@ public class Book {
   private Integer id;
 
 	@Column(nullable = false)
-	private String name; // name of symptom
+	private String name;
+
+	@ManyToOne
+	private Author author;
 
 	public Book() { }
 
@@ -33,5 +37,9 @@ public class Book {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public void setAuthor(Author author){
+		this.author = author;
 	}
 }
