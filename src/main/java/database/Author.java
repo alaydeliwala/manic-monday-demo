@@ -11,8 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name="Author")
+@Table(name="author")
 public class Author {
 
 	@Id
@@ -44,8 +46,23 @@ public class Author {
 		this.name = name;
     }
 
+	// @JsonIgnore
     public void addBook(Book book){
         books.add(book);
         book.setAuthor(this);
+	}
+
+	public void addBooks(List<Book> book){
+		for(int i = 0; i < books.size(); i++){
+			books.add(books.get(i));
+        	books.get(i).setAuthor(this);
+		}
+        
+	}
+
+	@OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+	@JsonIgnore
+	public List<Book> getBooks(){
+		return books;
 	}
 }

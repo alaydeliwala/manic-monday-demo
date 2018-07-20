@@ -1,12 +1,15 @@
 package database;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import database.BookRepository;
 import database.Book;
 
@@ -78,8 +81,33 @@ public class MainController {
 	 */
 	@GetMapping(path="/addBookWithAuthor")
 	public @ResponseBody String addNewBookWithAuthor (@RequestParam String name, @RequestParam String author) {
-		Author newAuthor = new Author(author);
 		Book newBook = new Book(name);
+		List<Book> books = new ArrayList<>();
+		Iterable<Author> authors = authorRepository.findAll();
+		for (Author author1: authors) {
+			if (author1.getName().equals(name)) {
+				books = authorRepository.findById(author1.getId()).get().getBooks();
+				books.add(newBook);
+				authorRepository.deleteById(author1.getId());
+				Author newAuthor = new Author(author);
+				newAuthor.addBooks(books);
+				authorRepository.save(authorRepository.findById(author1.getId()).get());
+				return "New book has been added";
+			}
+		}
+
+
+
+
+
+
+
+		
+		
+
+		Author newAuthor = new Author(author);
+		
+		// newBook.setAuthor(newAuthor);
 		newAuthor.addBook(newBook);
 		authorRepository.save(newAuthor);
 		// newBook.setAuthor(newAuthor);
