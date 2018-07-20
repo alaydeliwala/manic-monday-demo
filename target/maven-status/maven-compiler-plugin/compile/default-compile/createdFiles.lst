@@ -1,1 +1,6 @@
+database/Book.class
+database/Author.class
 database/Application.class
+database/AuthorRepository.class
+database/BookRepository.class
+database/MainController.class
