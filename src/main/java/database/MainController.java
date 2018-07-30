@@ -20,10 +20,10 @@ public class MainController {
 	private AuthorRepository authorRepository;
 
 	/**
-	 * A method to find a symptom based on its name
+	 * A method to find a book based on its name
 	 *
-	 * @param name the name of the symptom
-	 * @return JSON of specfied symptom
+	 * @param name the name of the book
+	 * @return JSON of specfied book
 	 */
 	@GetMapping(path="/findBook")
 	public @ResponseBody Book findBook(@RequestParam String name) {
@@ -37,9 +37,9 @@ public class MainController {
 	}
 
 	/**
-	 * Gets a list of all the symptoms in the database
+	 * Gets a list of all the books in the database
 	 *
-	 * @return the list of symptoms
+	 * @return the list of books
 	 */
 	@GetMapping(path="/allBooks")
 	public @ResponseBody Iterable<Book> getAllBooks() { 
@@ -47,9 +47,9 @@ public class MainController {
 	}
 
 	/**
-	 * Gets a list of all the symptoms in the database
+	 * Gets a list of all the authors in the database
 	 *
-	 * @return the list of symptoms
+	 * @return the list of authors
 	 */
 	@GetMapping(path="/allAuthors")
 	public @ResponseBody Iterable<Author> getAllAuthors() { 
@@ -59,7 +59,7 @@ public class MainController {
 	/**
 	 * Adds a symptom to the database
 	 *
-	 * @param name the name of the symptom
+	 * @param name the name of the book
 	 */
 	@GetMapping(path="/addBook")
 	public @ResponseBody String addNewBook (@RequestParam String name) {
@@ -70,9 +70,9 @@ public class MainController {
 	}
 
 	/**
-	 * Adds a symptom to the database
+	 * Adds a book with an author to the database
 	 *
-	 * @param name the name of the symptom
+	 * @param name the name of the book
 	 * @param author the name of the author
 	 */
 	@GetMapping(path="/addBookWithAuthor")
