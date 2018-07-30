@@ -10,7 +10,7 @@ import database.BookRepository;
 import database.Book;
 
 @Controller    // This means that this class is a Controller
-@RequestMapping(path="") // This means URL's start with /patient (after Application path)
+@RequestMapping(path="") // This means URL's start with / (after Application path)
 public class MainController {
 
 	@Autowired
